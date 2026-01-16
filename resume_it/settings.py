@@ -50,7 +50,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
-                'django.contrib.auth.processors.auth',
+                'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -60,7 +60,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'resume_it.wsgi.application'
 
 
-# Database
+# Database - в /data/ для сохранения между деплоями
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -93,21 +93,14 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files и Media files
-# Для Amvera используем /data/, для локальной разработки - BASE_DIR
-if os.path.exists('/data'):
-    # Продакшен (Amvera)
-    MEDIA_ROOT = '/data/media'
-    MEDIA_URL = '/media/'
-else:
-    # Локальная разработка
-    MEDIA_ROOT = BASE_DIR / 'media'
-    MEDIA_URL = '/media/'
-    
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# Static files - в корне проекта (пересобирается при деплое)
 STATIC_URL = '/static/'
-# WhiteNoise для статических файлов
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Media files - в /data/ для сохранения загруженных изображений
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/data/media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

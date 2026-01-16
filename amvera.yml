@@ -9,7 +9,7 @@ build:
   useCache: true
 run:
   command: |
-    mkdir -p /data/media /data/staticfiles &&
+    mkdir -p /data/media &&
     python manage.py migrate --noinput &&
     python manage.py collectstatic --noinput &&
     gunicorn resume_it.wsgi:application --bind 0.0.0.0:8000 --workers 2 --timeout 30
@@ -19,4 +19,4 @@ serviceType: compute
 env:
   SECRET_KEY: "django-insecure-k+dzg6w=1j!%h^9ti*9r^3p(!*p=&_t0ew5foq1xo-z&4!h!lb"
   DEBUG: "False"
-  ALLOWED_HOSTS: "rezume-it-pihtulovegena.amvera.io,localhost,127.0.0.1,.amvera.io"
+  ALLOWED_HOSTS: "rezume-it-pihtulovevgeny.amvera.io,localhost,127.0.0.1,.amvera.io"
