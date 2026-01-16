@@ -37,7 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Для статики
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'resume_it.urls'
@@ -50,7 +50,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
+                'django.contrib.auth.context_processors.auth',  # ✅ Исправлено!
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -60,7 +60,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'resume_it.wsgi.application'
 
 
-# Database - в /data/ для сохранения между деплоями
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -93,26 +93,25 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files - в корне проекта (пересобирается при деплое)
+# Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Media files - в /data/ для сохранения загруженных изображений
+# Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/data/media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# CSRF настройки для работы с доменами
+# CSRF настройки
 CSRF_TRUSTED_ORIGINS = [
     'https://*.amvera.io',
     'http://localhost',
     'http://127.0.0.1',
 ]
 
-# CSRF куки
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = False
