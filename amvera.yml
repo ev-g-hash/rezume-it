@@ -10,8 +10,6 @@ build:
 run:
   command: |
     mkdir -p /data/media &&
-    python manage.py migrate --noinput &&
-    python manage.py collectstatic --noinput &&
     gunicorn resume_it.wsgi:application --bind 0.0.0.0:8000 --workers 2 --timeout 30
   persistenceMount: /data
   containerPort: "8000"
