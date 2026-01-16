@@ -15,8 +15,6 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # Allowed hosts
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-
-# ДОБАВЬТЕ ВАШ ДОМЕН:
 ALLOWED_HOSTS += ['rezume-it-pihtulovevgeny.amvera.io', '*.amvera.io']
 
 
@@ -52,7 +50,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
+                'django.contrib.auth.processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -66,7 +64,6 @@ WSGI_APPLICATION = 'resume_it.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
         'NAME': '/data/db.sqlite3',
     }
 }
@@ -96,27 +93,51 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# Static files и Media files
+# Для Amvera используем /data/, для локальной разработки - BASE_DIR
+if os.path.exists('/data'):
+    # Продакшен (Amvera)
+    STATIC_ROOT = '/data/staticfiles'
+    STATIC_URL = '/static/'
+    MEDIA_ROOT = '/data/media'
+    MEDIA_URL = '/media/'
+else:
+    # Локальная разработка
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    STATIC_URL = '/static/'
+    MEDIA_ROOT = BASE_DIR / 'media'
+    MEDIA_URL = '/media/'
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# WhiteNoise для статических файлов
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# ⭐ КРИТИЧЕСКИ ВАЖНО ДЛЯ ПРОДАКШЕНА:
 # CSRF настройки для работы с доменами
 CSRF_TRUSTED_ORIGINS = [
-    'https://rezume-it-pihtulovegena.amvera.io',
     'https://*.amvera.io',
     'http://localhost',
     'http://127.0.0.1',
 ]
 
-# ⭐ РАЗРЕШИТЬ CSRF куки для разработки (убрать в проде если нужен https)
+# CSRF куки
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = False
+
+
+# Логирование
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+}
