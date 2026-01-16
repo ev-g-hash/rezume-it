@@ -238,7 +238,7 @@ media/videos/
 *.pptx
 
 # Static files (collected)
-staticfiles/
+
 staticfiles_admin/
 
 # Cache
@@ -291,7 +291,7 @@ config/local_settings.py
 local_settings.py
 
 # Django collectstatic
-staticfiles/
+# staticfiles/
 
 # Celery
 celerybeat-schedule
