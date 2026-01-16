@@ -8,6 +8,6 @@ urlpatterns = [
     path('', include('resume.urls')),
 ]
 
-# Для продакшена - обслуживание медиа файлов через WhiteNoise
+# Для локальной разработки - Django обслуживает медиа
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
