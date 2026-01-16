@@ -97,17 +97,15 @@ USE_TZ = True
 # Для Amvera используем /data/, для локальной разработки - BASE_DIR
 if os.path.exists('/data'):
     # Продакшен (Amvera)
-    STATIC_ROOT = '/data/staticfiles'
-    STATIC_URL = '/static/'
     MEDIA_ROOT = '/data/media'
     MEDIA_URL = '/media/'
 else:
     # Локальная разработка
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    STATIC_URL = '/static/'
     MEDIA_ROOT = BASE_DIR / 'media'
     MEDIA_URL = '/media/'
-
+    
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
 # WhiteNoise для статических файлов
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
