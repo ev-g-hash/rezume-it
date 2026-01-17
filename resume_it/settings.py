@@ -21,7 +21,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ('true', '1', 'yes')
 # ALLOWED_HOSTS - разрешенные хосты для production
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '*').split(',')
 
-# CSRF trusted origins для HTTPS
+# CSRF trusted origins для HTTPS (ОБЯЗАТЕЛЬНО!)
 CSRF_TRUSTED_ORIGINS = [
     'https://rezume-it-pihtulovevgeny.amvera.io',
     'https://*.amvera.io',
@@ -35,12 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'resume',
+    'resume',  # Наше приложение
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise для статики
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,7 +70,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'resume_it.wsgi.application'
 
 
-# Database - SQLite для Amvera с persistence mount
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -105,13 +105,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = Path('/data/staticfiles')  # Изменено на /data
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Для collectstatic
 
 # Для WhiteNoise - сжимает статические файлы
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = Path('/data/media')  # Изменено на /data для persistence
+MEDIA_ROOT = Path('/data/media')  # Для загружаемых файлов (photos, certificates)
 
 
 # Default primary key field type

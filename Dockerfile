@@ -23,6 +23,9 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Копируем весь проект
 COPY . .
 
+# Собираем статические файлы (СОЗДАЕТ MANIFEST!)
+RUN python manage.py collectstatic --noinput
+
 # Открываем порт
 EXPOSE 8000
 
