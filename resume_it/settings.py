@@ -118,8 +118,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Для WhiteNoise - сжимает статические файлы
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = Path('/data/media')  
+
 
 
 # Default primary key field type

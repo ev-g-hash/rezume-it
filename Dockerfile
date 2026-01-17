@@ -20,9 +20,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Создаем папку для медиа файлов
-RUN mkdir -p /app/media /app/staticfiles
-
 # Копируем весь проект
 COPY . .
 
