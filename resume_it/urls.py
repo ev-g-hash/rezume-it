@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('resume.urls')),
 ]
 
-# Для разработки - обслуживание медиа файлов
+# Для production статика и медиа обслуживаются WhiteNoise и веб-сервером
+# Но для режима DEBUG оставляем возможность локальной разработки
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

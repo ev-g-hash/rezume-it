@@ -20,17 +20,14 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
+# Создаем папку для медиа файлов
+RUN mkdir -p /app/media /app/staticfiles
+
 # Копируем весь проект
 COPY . .
-
-# Создаем папку для медиа файлов
-RUN mkdir -p /app/media
-
-# Собираем статические файлы
-RUN python manage.py collectstatic --noinput
 
 # Открываем порт
 EXPOSE 8000
 
 # Команда для запуска
-CMD ["gunicorn", "resume_it.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "2", "--timeout", "30"]
+CMD ["gunicorn", "resume_it.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "2", "--timeout", "30", "--access-logfile", "-", "--error-logfile", "-"]
