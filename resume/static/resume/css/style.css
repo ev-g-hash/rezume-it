@@ -2,6 +2,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
+    overflow-x: hidden; /* Добавляем! */
 }
 
 .main-content {
@@ -13,6 +14,8 @@ body {
     padding: 80px 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+    width: 100%; /* Исправлено! */
+    overflow-x: hidden; /* Добавляем! */
 }
 
 .profile-image {
@@ -162,6 +165,30 @@ footer {
         width: 200px;
         height: 200px;
     }
+    
+    /* Добавляем для мобильных - исправление навбара */
+    .hero-section {
+        padding: 60px 15px; /* Уменьшаем отступы по бокам */
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        padding: 50px 10px;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 .certificate-card {
@@ -169,7 +196,7 @@ footer {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
-    overflow: hidden; /* Для корректной работы hover эффекта */
+    overflow: hidden;
 }
 
 .certificate-card:hover {
@@ -178,20 +205,19 @@ footer {
 }
 
 .certificate-card .card-img-top {
-    height: auto; /* Убираем фиксированную высоту */
-    max-height: 400px; /* Максимальная высота */
+    height: auto;
+    max-height: 400px;
     width: 100%;
-    object-fit: contain; /* Показываем полностью без обрезки */
-    object-position: center; /* Центрируем изображение */
-    transition: transform 0.3s ease; /* Плавное увеличение */
-    cursor: pointer; /* Курсор как ссылка */
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .certificate-card .card-img-top:hover {
-    transform: scale(1.05); /* Увеличиваем на 5% при наведении */
+    transform: scale(1.05);
 }
 
-/* Альтернативный вариант с модальным окном */
 .certificate-image-modal {
     cursor: pointer;
     transition: transform 0.3s ease;
