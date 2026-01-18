@@ -133,7 +133,7 @@
     height: auto !important;
     max-height: 60vh;
     width: 100%;
-    object-fit: contain !important; /* Как в сертификатах */
+    object-fit: contain !important;
     object-position: center;
     background: #f8f9fa;
 }
@@ -142,6 +142,29 @@
     .project-carousel-img {
         max-height: 40vh;
     }
+}
+
+/* Красные стрелки навигации карусели */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #dc3545; /* Красный цвет */
+    background-size: 60% 60%;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* Ховер эффект */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: #c82333; /* Темно-красный при наведении */
 }
 </style>
 {% endblock %}
