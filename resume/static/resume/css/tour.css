@@ -72,6 +72,24 @@
     box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
 }
 
+/* Кнопка перезапуска тура в футере */
+.tour-restart-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tour-restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    color: white;
+}
+
 /* Контейнер для подсказок тура */
 .tour-tooltip {
     position: fixed;
