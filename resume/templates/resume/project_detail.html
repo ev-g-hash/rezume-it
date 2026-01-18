@@ -31,8 +31,7 @@
                             {% for image in project.images.all %}
                             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                                 <img src="{{ image.image.url }}" 
-                                     class="d-block w-100" 
-                                     style="height: 400px; object-fit: cover;"
+                                     class="d-block w-100 project-carousel-img"
                                      alt="{{ image.caption|default:project.title }}">
                                 {% if image.caption %}
                                 <div class="carousel-caption d-none d-md-block">
@@ -127,6 +126,22 @@
 
 .technologies .badge {
     font-size: 0.8rem;
+}
+
+/* Исправление для мобильных - показываем полное изображение как в сертификатах */
+.project-carousel-img {
+    height: auto !important;
+    max-height: 60vh;
+    width: 100%;
+    object-fit: contain !important; /* Как в сертификатах */
+    object-position: center;
+    background: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+    .project-carousel-img {
+        max-height: 40vh;
+    }
 }
 </style>
 {% endblock %}
