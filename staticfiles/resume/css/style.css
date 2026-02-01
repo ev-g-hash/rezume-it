@@ -4,12 +4,12 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     overflow-x: hidden; /* Добавляем! */
-    background-color: #b9bbbd; /* Светло-серый фон */
+    background-color: #f8f9fa; /* Светло-серый фон */
 }
 
 .main-content {
     margin-top: 76px; /* Высота navbar */
-    background-color: #b9bbbd; /* Тоже светло-серый */
+    background-color: #f8f9fa; /* Тоже светло-серый */
     min-height: calc(100vh - 76px); /* Чтобы футер был внизу */
 }
 
