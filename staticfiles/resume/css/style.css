@@ -3,6 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     overflow-x: hidden; /* Добавляем! */
+    background-color: #d3e5f7; /* Светло-серый фон */
 }
 
 .main-content {
