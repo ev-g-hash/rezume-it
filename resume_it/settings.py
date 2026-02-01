@@ -153,3 +153,10 @@ LOGGING = {
         },
     },
 }
+
+# Временное отключение CSP для решения проблемы
+SECURE_CONTENT_TYPE_NOSNIFF = False
+SECURE_BROWSER_XSS_FILTER = False
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+# Отключаем CSP полностью
+CONTENT_SECURITY_POLICY = None

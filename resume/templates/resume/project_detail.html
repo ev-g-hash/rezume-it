@@ -84,7 +84,9 @@
                     <!-- Ссылки -->
                     <div class="d-grid gap-2">
                         {% if project.demo_url %}
-                        <a href="{{ project.demo_url }}" class="btn btn-success" target="_blank">
+                        <a href="{{ project.demo_url }}" 
+                           class="btn btn-success demo-link" 
+                           target="_blank">
                             <i class="fas fa-external-link-alt"></i> Посмотреть демо
                         </a>
                         {% endif %}
