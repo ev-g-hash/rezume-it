@@ -1,12 +1,16 @@
 /* resume/static/resume/css/style.css */
+/* resume/static/resume/css/style.css */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     overflow-x: hidden; /* Добавляем! */
+    background-color: #b9bbbd; /* Светло-серый фон */
 }
 
 .main-content {
     margin-top: 76px; /* Высота navbar */
+    background-color: #b9bbbd; /* Тоже светло-серый */
+    min-height: calc(100vh - 76px); /* Чтобы футер был внизу */
 }
 
 /* Hero Section */
