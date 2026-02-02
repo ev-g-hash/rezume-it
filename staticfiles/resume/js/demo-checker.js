@@ -5,7 +5,7 @@
     
     // Список демо URL которые могут быть отключены
     const potentiallyOfflineDemoUrls = [
-        // 'planer-pihtulovevgeny.amvera.io',
+        'planer-pihtulovevgeny.amvera.io',
         'videos-pihtulovevgeny.amvera.io',
         'fotos-pihtulovevgeny.amvera.io',
         'pbc-shop-pihtulovevgeny.amvera.io',
